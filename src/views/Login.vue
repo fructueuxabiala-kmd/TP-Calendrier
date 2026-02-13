@@ -16,18 +16,14 @@ const login =() => {
 
 
 <template>
- <!-- <div>
-    <h1>LOGIN</h1>
-<form @submit.prevent="login">
-    <div>
-        <input v-model="email" type="email" required placeholder="your mail ...." />
-        <input v-model="password" type="password" required placeholder=" Password" />
-        <button type="submit">connecter</button>
-    </div>
-</form>
-
-    <p>Je n'est pas un compte, <RouterLink to="/signin">Créer un compte</RouterLink></p>
- </div> -->
+<!-- <nav>
+  <div>
+    <RouterLink to="/demo">DEMO</RouterLink>
+  </div>
+  <div>
+    <RouterLink to="/signin">SIGN IN</RouterLink>
+  </div>
+</nav> -->
 <div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-white-200 via-blue-200 to-white-200 p-6">
   
   <div class="w-full max-auto max-w-md backdrop-blur-lg bg-black/15 p-8 rounded-3xl shadow-2xl border border-white/30">

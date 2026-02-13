@@ -1,12 +1,17 @@
 import { isAuthenticated } from '@/services/authServices'
-import Login from '@/views/Login.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import Login from '@/views/Login.vue'
 
 const routes = [
   {
     path: '/',
     name: 'login',
     component: Login,
+  },
+  {
+    path: '/demo',
+    name: 'demo',
+    component: () => import('@/views/Demo.vue'),
   },
   {
     path: '/signin',

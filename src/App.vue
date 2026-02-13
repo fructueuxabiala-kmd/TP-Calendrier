@@ -1,12 +1,13 @@
 <script setup>
+import Navigation from './components/Navigation.vue';
+
 
 
 
 </script>
 
 <template>
-  <h1>app</h1>
-
+  <Navigation/>
  <main>
   <RouterView/>
  </main>
