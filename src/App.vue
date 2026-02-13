@@ -5,11 +5,13 @@
 </script>
 
 <template>
-  <h1>app</h1>
+ 
+<router-link to="/calendar">Calendrier</router-link>
 
- <main>
-  <RouterView/>
- </main>
+<router-link to="/">Login</router-link>
+ 
+
+ <router-view></router-view>
 </template>
 
 <style scoped></style>

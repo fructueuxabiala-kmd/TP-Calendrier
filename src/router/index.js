@@ -20,7 +20,7 @@ const routes = [
     meta: { requireAuth: true },
     children: [
       {
-        path: '/addevent',
+        path: 'addevent',
         name: 'addevent',
         component: () => import('@/views/AddEvent.vue'),
         meta: { requireAuth: true },
