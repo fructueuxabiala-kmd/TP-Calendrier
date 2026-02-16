@@ -3,8 +3,9 @@ import ListTask from '@/components/ListTask.vue'
 import AddEvent from './AddEvent.vue'
 import { ref } from 'vue'
 
-import { useRouter } from 'vue-router'
-import { authService } from '@/services/authServices'
+    import { useRouter } from 'vue-router';
+// import { useRouter } from 'vue-router';
+// import { authService } from '@/services/authServices';
 
 const router = useRouter()
 
