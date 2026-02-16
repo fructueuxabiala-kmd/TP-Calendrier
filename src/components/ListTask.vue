@@ -28,8 +28,8 @@ function addTask(day) {
   console.log(day)
 }
 
-function dropTask(e){
-const id = Number(e.dataTransfer.getData('task'))
+function dropTask(e) {
+  const id = Number(e.dataTransfer.getData('task'))
 }
 </script>
 
@@ -81,8 +81,9 @@ const id = Number(e.dataTransfer.getData('task'))
         </div>
 
         <div
-          class="flex-1 bg-white/60 backdrop-blur-sm border-t-2 border-transparent group-hover:border-indigo-500 rounded-xl p-4 shadow-sm ring-1 ring-slate-200 transition-all hover:shadow-md min-h-[300px]"  @dragover.prevent @drop="dropTask"
-  
+          class="flex-1 bg-white/60 backdrop-blur-sm border-t-2 border-transparent group-hover:border-indigo-500 rounded-xl p-4 shadow-sm ring-1 ring-slate-200 transition-all hover:shadow-md min-h-[300px]"
+          @dragover.prevent
+          @drop="dropTask"
         >
           <div class="space-y-3">
             <component :is="componentsMap[jour]" />
@@ -90,7 +91,8 @@ const id = Number(e.dataTransfer.getData('task'))
 
           <div
             @click="addTask(jour)"
-            class="mt-0 border-2 border-dashed border-slate-200 rounded-lg p-3 text-center text-slate-400 text-sm hover:border-indigo-300 hover:text-indigo-400 cursor-pointer transition-colors" v-if="taskStore.tasksByDate(jour).length ==0"
+            class="mt-0 border-2 border-dashed border-slate-200 rounded-lg p-3 text-center text-slate-400 text-sm hover:border-indigo-300 hover:text-indigo-400 cursor-pointer transition-colors"
+            v-if="taskStore.tasksByDate(jour).length == 0"
           >
             + Ajouter
           </div>

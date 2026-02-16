@@ -16,9 +16,8 @@ export const useListStore = defineStore('list', {
   },
 
   actions: {
-
-    toggleEdit(){
-        this.isEdit = !this.isEdit
+    toggleEdit() {
+      this.isEdit = !this.isEdit
     },
     addTask(task) {
       this.tasks.push(task)
@@ -28,35 +27,33 @@ export const useListStore = defineStore('list', {
       this.tasks = this.tasks.filter((t) => t.id !== id)
     },
 
-    setEditedTask(obj){
-        this.editedTask = obj 
+    setEditedTask(obj) {
+      this.editedTask = obj
     },
 
-    updateTask(changedTask){
-        if(this.editedTask !== null){
-             this.editedTask.task = changedTask
-        }
-    }
+    updateTask(changedTask) {
+      if (this.editedTask !== null) {
+        this.editedTask.task = changedTask
+      }
+    },
   },
 })
 
-export const useModalStore = defineStore('modal',{
-    state: ()=> ({
-        isOpen: false,
-        selectedDay: 'Lundi'
-    }),
+export const useModalStore = defineStore('modal', {
+  state: () => ({
+    isOpen: false,
+    selectedDay: 'Lundi',
+  }),
 
-    actions:{
-        open(){
-            this.isOpen = true
-        },
-        close(){
-            this.isOpen = false
-        },
-        setDay(day){
-          this.selectedDay = day
-        }
-    }
-
-
+  actions: {
+    open() {
+      this.isOpen = true
+    },
+    close() {
+      this.isOpen = false
+    },
+    setDay(day) {
+      this.selectedDay = day
+    },
+  },
 })

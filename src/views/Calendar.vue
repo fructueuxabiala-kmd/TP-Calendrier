@@ -6,8 +6,6 @@ import { ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { authService } from '@/services/authServices'
 
-
-
 const router = useRouter()
 
 const deconnect = () => {
@@ -18,8 +16,8 @@ const deconnect = () => {
 
 <template>
   <router-link to="addevent">Modal</router-link>
-  
-  <ListTask ></ListTask>
+
+  <ListTask></ListTask>
   <AddEvent></AddEvent>
   <router-view></router-view>
 

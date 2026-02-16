@@ -1,20 +1,13 @@
 <script setup>
-import { useListStore } from '@/stores/listTask';
-
-
+import { useListStore } from '@/stores/listTask'
 
 const taskStore = useListStore()
 </script>
 
 <template>
-
-<tr v-for="task in taskStore.tasksByDate('Jeudi')">
-  <td class="py-4 px-6 border-b border-gray-200">{{ task.task }}</td>
-</tr>
-
+  <tr v-for="task in taskStore.tasksByDate('Jeudi')">
+    <td class="py-4 px-6 border-b border-gray-200">{{ task.task }}</td>
+  </tr>
 </template>
 
-<style scoped>
-
-
-</style>
+<style scoped></style>
