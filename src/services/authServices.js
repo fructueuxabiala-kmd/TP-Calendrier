@@ -14,12 +14,12 @@ export const authService = {
         auth.value = false
     },
 
-    inscription(userData){
-        console.log("new user:", userData);
-        
-        return true
-    }
-};
+  inscription(userData) {
+    console.log('new user:', userData)
+
+    return true
+  },
+}
 export const isAuthenticated = () => {
   return localStorage.getItem('auth') === 'true'
 }
