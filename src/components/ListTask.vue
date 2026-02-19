@@ -1,104 +1,104 @@
 <script setup>
-import { computed } from 'vue';
+import { useListStore, useModalStore } from '@/stores/listTask'
+import { computed } from 'vue'
+import Lundi from './Lundi.vue'
+import Mardi from './Mardi.vue'
+import Mercredi from './Mercredi.vue'
+import Jeudi from './Jeudi.vue'
+import Vendredi from './Vendredi.vue'
+import Samedi from './Samedi.vue'
+import Dimanche from './Dimanche.vue'
 
+const taskStore = useListStore()
+const modalStore = useModalStore()
+// const days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']
 
-const days = ["Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi","Dimanche"]
-
-const listTasks = JSON.parse(localStorage.getItem('listTasks'))
-const emit = defineEmits(['currentDay'])
+const componentsMap = {
+  Lundi,
+  Mardi,
+  Mercredi,
+  Jeudi,
+  Vendredi,
+  Samedi,
+  Dimanche,
+}
 function addTask(day) {
-    emit('currentDay',day)
-    console.log(day);
+  modalStore.open()
+  modalStore.setDay(day)
+  console.log(day)
 }
 
+function dropTask(e) {
+  const id = Number(e.dataTransfer.getData('task'))
+}
 </script>
 
 <template>
-  <div class="shadow-lg rounded-lg overflow-hidden mx-7 md:mx-10 flex">
-    <table class="w-full table-fixed" v-for="day in days" :key="day">
-      <thead>
-        <tr class="bg-gray-100" @click="addTask(day)">
-          <th class="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">{{ day }}</th>
-        </tr>
-      </thead>
-      <tbody class="bg-white" v-for="task in listTasks">
-        <tr>
-          <td class="py-4 px-6 border-b border-gray-200">{{ day===task.day?task.task:'' }}</td>
-        </tr>
-      </tbody>
-    </table>
-    <!-- <table class="w-full table-fixed">
-      <thead>
-        <tr class="bg-gray-100">
-          <th class="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Mardi</th>
-        </tr>
-      </thead>
-      <tbody class="bg-white">
-        <tr>
-          <td class="py-4 px-6 border-b border-gray-200"></td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="w-full table-fixed">
-      <thead>
-        <tr class="bg-gray-100">
-          <th class="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Mercredi</th>
-        </tr>
-      </thead>
-      <tbody class="bg-white">
-        <tr>
-          <td class="py-4 px-6 border-b border-gray-200">John Doe</td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="w-full table-fixed">
-      <thead>
-        <tr class="bg-gray-100">
-          <th class="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Jeudi</th>
-        </tr>
-      </thead>
-      <tbody class="bg-white">
-        <tr>
-          <td class="py-4 px-6 border-b border-gray-200">John Doe</td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="w-full table-fixed">
-      <thead>
-        <tr class="bg-gray-100">
-          <th class="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Vendredi</th>
-        </tr>
-      </thead>
-      <tbody class="bg-white">
-        <tr>
-          <td class="py-4 px-6 border-b border-gray-200">John Doe</td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="w-full table-fixed">
-      <thead>
-        <tr class="bg-gray-100">
-          <th class="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Samedi</th>
-        </tr>
-      </thead>
-      <tbody class="bg-white">
-        <tr>
-          <td class="py-4 px-6 border-b border-gray-200">{{   }}</td>
-        </tr>
-      </tbody>
-    </table>
-    <table class="w-full table-fixed">
-      <thead>
-        <tr class="bg-gray-100 ">
-          <th class="w-1/4 py-4 px-6 text-left text-gray-600 font-bold uppercase">Dimanche</th>
-        </tr>
-      </thead>
-      <tbody class="bg-white min-h-40">
-        <tr>
-          <td class="py-4 px-6 border-b border-gray-200">fghg</td>
-        </tr>
-      </tbody>
-    </table> -->
+  <div class="min-h-screen bg-slate-50 p-6">
+    <header class="mb-8 flex items-center justify-between">
+      <h2 class="text-2xl font-extrabold text-slate-800 tracking-tight">Semaine de Travail</h2>
+      <div class="flex space-x-2">
+        <span
+          class="px-3 py-1 bg-indigo-100 text-indigo-700 text-xs font-bold rounded-full uppercase"
+          >Février 2026</span
+        >
+      </div>
+    </header>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-7 gap-6">
+      <div
+        v-for="jour in ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']"
+        :key="jour"
+        class="flex flex-col group"
+      >
+        <div
+          @click="addTask(jour)"
+          class="flex items-center justify-between mb-4 cursor-pointer group-hover:translate-x-1 transition-transform duration-200"
+        >
+          <span
+            class="text-sm font-bold text-slate-400 uppercase tracking-widest group-hover:text-indigo-600"
+          >
+            {{ jour }}
+          </span>
+          <button
+            class="opacity-0 group-hover:opacity-100 bg-white shadow-sm border border-slate-200 rounded p-1 text-indigo-600 transition-all"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-4 w-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M12 4v16m8-8H4"
+              />
+            </svg>
+          </button>
+        </div>
+
+        <div
+          class="flex-1 bg-white/60 backdrop-blur-sm border-t-2 border-transparent group-hover:border-indigo-500 rounded-xl p-4 shadow-sm ring-1 ring-slate-200 transition-all hover:shadow-md min-h-[300px]"
+          @dragover.prevent
+          @drop="dropTask"
+        >
+          <div class="space-y-3">
+            <component :is="componentsMap[jour]" />
+          </div>
+
+          <div
+            @click="addTask(jour)"
+            class="mt-0 border-2 border-dashed border-slate-200 rounded-lg p-3 text-center text-slate-400 text-sm hover:border-indigo-300 hover:text-indigo-400 cursor-pointer transition-colors"
+            v-if="taskStore.tasksByDate(jour).length == 0"
+          >
+            + Ajouter
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 

@@ -1,12 +1,17 @@
 import { isAuthenticated } from '@/services/authServices'
-import Login from '@/views/Login.vue'
 import { createRouter, createWebHistory } from 'vue-router'
+import Login from '@/views/Login.vue'
 
 const routes = [
   {
     path: '/',
     name: 'login',
     component: Login,
+  },
+  {
+    path: '/demo',
+    name: 'demo',
+    component: () => import('@/views/Demo.vue'),
   },
   {
     path: '/signin',
@@ -34,13 +39,12 @@ const router = createRouter({
   routes,
 })
 
-
-router.beforeEach((to,from,next) => {
-  const logged = isAuthenticated();
+router.beforeEach((to, from, next) => {
+  const logged = isAuthenticated()
   if (to.meta.requireAuth && !logged) {
-     next ({ name: 'login'})
-  } else  if (to.name === 'login' && logged) {
-    next ({name: 'calendar'})
+    next({ name: 'login' })
+  } else if (to.name === 'login' && logged) {
+    next({ name: 'calendar' })
   } else {
     next()
   }

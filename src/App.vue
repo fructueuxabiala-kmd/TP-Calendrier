@@ -1,17 +1,16 @@
 <script setup>
+import Navigation from './components/Navigation.vue';
+
 
 
 
 </script>
 
 <template>
- 
-<router-link to="/calendar">Calendrier</router-link>
-
-<router-link to="/">Login</router-link>
- 
-
- <router-view></router-view>
+  <Navigation/>
+ <main>
+  <RouterView/>
+ </main>
 </template>
 
 <style scoped></style>
