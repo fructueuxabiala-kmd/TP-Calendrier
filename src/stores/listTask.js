@@ -36,6 +36,14 @@ export const useListStore = defineStore('list', {
         this.editedTask.task = changedTask
       }
     },
+    dropTask(id, jour) {
+  const index = this.tasks.findIndex((t) => t.id === id)
+  if (index !== -1) {
+    // crée un nouvel objet pour que Vue détecte le changement
+    this.tasks[index] = { ...this.tasks[index], day: jour }
+  }
+}
+
 }
 })
 
