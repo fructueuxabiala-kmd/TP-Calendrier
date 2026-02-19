@@ -1,3 +1,4 @@
+
 <script setup>
 import { ref, reactive } from 'vue'
 import { useRouter } from 'vue-router'
@@ -6,6 +7,8 @@ import { authService } from '@/services/authServices'
 const router = useRouter()
 
 const differencePW = ref('')
+const showModal = ref(false)
+
 const form = reactive({
   nom: '',
   prenom: '',
@@ -16,23 +19,26 @@ const form = reactive({
 })
 
 const newUser = () => {
-  
   differencePW.value = ''
 
-  
   if (form.password !== form.confirmPassword) {
     differencePW.value = 'Les mots de passe ne sont pas identiques.'
     return
   }
 
-  
   const estBon = authService.inscription({ ...form })
   
   if (estBon) {
-    alert('Compte créé avec succès !')
-    router.push('/')
+   
+    showModal.value = true
   }
 }
+
+const goToLogin = () => {
+  showModal.value = false
+  router.push('/') 
+}
+
 </script>
 
 <template>
@@ -134,6 +140,31 @@ const newUser = () => {
         </p>
       </div>
     </div>
+    <div v-if="showModal" class="fixed inset-0 z-50 flex items-center justify-center p-4">
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm"></div>
+  
+  <div class="relative bg-white rounded-[2rem] p-8 max-w-sm w-full text-center shadow-2xl transform transition-all scale-100">
+    <div class="mb-4 flex justify-center">
+      <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+    </div>
+    
+    <h3 class="text-2xl font-black text-gray-800 mb-2 uppercase">Succès !</h3>
+    <p class="text-gray-600 mb-6">
+      Votre compte a été créé avec succès. Vous pouvez maintenant vous connecter.
+    </p>
+    
+    <button
+      @click="goToLogin"
+      class="w-full py-3 bg-gradient-to-r from-blue-500 to-purple-600 text-white font-bold rounded-xl hover:opacity-90 transition-all uppercase tracking-wide"
+    >
+      Continuer
+    </button>
+  </div>
+</div>
   </div>
 </template>
 
