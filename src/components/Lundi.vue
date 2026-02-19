@@ -4,11 +4,15 @@ const modaleStore = useModalStore()
 
 const taskStore = useListStore()
 
+function ConfirmDelelte(id){
+taskStore.setDeletedTask(id)
+}
 function updateTask(task) {
   modaleStore.open()
   taskStore.setEditedTask(task)
   taskStore.toggleEdit()
 }
+
 </script>
 
 <template>
@@ -64,7 +68,7 @@ function updateTask(task) {
 
             <!-- Delete -->
             <button
-              @click="taskStore.removeTask(task.id)"
+              @click="ConfirmDelelte(task.id)"
               class="flex items-center justify-center w-8 h-8 rounded-lg bg-red-50 text-red-500 hover:bg-red-600 hover:text-white transition-all duration-200 hover:scale-105"
             >
               <svg
