@@ -91,7 +91,7 @@ function dropTask(e,jour) {
         >
           <div class="flex-1 bg-white/60 backdrop-blur-sm border-t-2 border-transparent group-hover:border-indigo-500 rounded-xl p-4 shadow-sm ring-1 ring-slate-200 transition-all hover:shadow-md min-h-[300px] flex flex-col gap-3">
   <component :is="componentsMap[jour]" @drop="(e) => dropTask(e, jour)" />
-  <!-- d'autres enfants ici -->
+
 </div>
 
 

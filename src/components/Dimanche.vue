@@ -4,20 +4,25 @@ const modaleStore = useModalStore()
 
 const taskStore = useListStore()
 
+function ConfirmDelelte(id){
+taskStore.setDeletedTask(id)
+}
 function updateTask(task) {
   modaleStore.open()
   taskStore.setEditedTask(task)
   taskStore.toggleEdit()
 }
+
 </script>
 
 <template>
   <tr
     v-for="task in taskStore.tasksByDate('Dimanche')"
     :key="task.id"
-    class="group"
+    class="group "
     draggable="true"
     @dragstart="(e) => e.dataTransfer.setData('task', task.id.toString())"
+    
   >
     <td class="w-xl max-w-[300px]" >
       <div
@@ -63,7 +68,7 @@ function updateTask(task) {
 
             <!-- Delete -->
             <button
-              @click="taskStore.removeTask(task.id)"
+              @click="ConfirmDelelte(task.id)"
               class="flex items-center justify-center w-8 h-8 rounded-lg bg-red-50 text-red-500 hover:bg-red-600 hover:text-white transition-all duration-200 hover:scale-105"
             >
               <svg
