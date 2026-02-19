@@ -1,5 +1,7 @@
 <script setup>
 import Navigation from './components/Navigation.vue';
+import Modal from './views/Modal.vue';
+import ModalConfirm from './views/ModalConfirm.vue';
 
 
 
@@ -9,7 +11,11 @@ import Navigation from './components/Navigation.vue';
 <template>
   <Navigation/>
  <main>
+   <ModalConfirm></ModalConfirm>
+   <Modal></Modal>
   <RouterView/>
+
+
  </main>
 </template>
 
