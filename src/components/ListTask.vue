@@ -34,8 +34,8 @@ function dropTask(e) {
 </script>
 
 <template>
-  <div class="min-h-screen bg-slate-50 p-6">
-    <header class="mb-8 flex items-center justify-between">
+  <div class="min-h-screen bg-slate-50 p-6 pt-30">
+    <header class="mb-8 flex items-center justify-between pb-20">
       <h2 class="text-2xl font-extrabold text-slate-800 tracking-tight">Semaine de Travail</h2>
       <div class="flex space-x-2">
         <span
