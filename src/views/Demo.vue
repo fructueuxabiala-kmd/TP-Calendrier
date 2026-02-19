@@ -1,16 +1,9 @@
  <script setup>
 
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const playButton = document.getElementById('play-button');
-    const thumbnail = document.getElementById('thumbnail');
-    const videoContainer = document.getElementById('video');
+import demoVideo from '@/assets/demofinal.mp4'
 
-    playButton.addEventListener('click', () => {
-      thumbnail.classList.add('hidden');
-      videoContainer.classList.remove('hidden');
-    });
-  });
+ 
 
 
 </script>
@@ -32,40 +25,33 @@
       </p>
     </div>
 
-    <!-- Video Section -->
-    <div class="max-w-4xl mx-auto">
-      <div class="relative rounded-xl overflow-hidden shadow-2xl" id="video-container">
-        <!-- Thumbnail View -->
-        <div id="thumbnail" class="relative">
-          <img
-            src="https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80"
-            alt="Video thumbnail"
-            class="w-full aspect-video object-cover"
-          />
-          <div class="absolute inset-0 bg-black/30 flex items-center justify-center cursor-pointer" id="play-button">
-            <!-- Play Button SVG -->
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#b03536]" fill="currentColor" viewBox="0 0 20 20">
-              <path d="M4 4l12 6-12 6V4z" />
-            </svg>
-          </div>
-        </div>
-        <!-- Video Embed -->
-        <div id="video" class="hidden aspect-video relative ">
-          <iframe
-            class="absolute inset-0 w-full h-full"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1"
-            title="The Artist Barefoot Showcase"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-        </div>
-      </div>
+<div class="max-w-4xl mx-auto">
+  <div class="bg-[#1a1a1a] rounded-t-xl py-3 px-5 flex items-center gap-2 border-b border-white/5">
+    <div class="flex gap-1.5">
+      <div class="w-3 h-3 rounded-full bg-red-500/80"></div>
+      <div class="w-3 h-3 rounded-full bg-yellow-500/80"></div>
+      <div class="w-3 h-3 rounded-full bg-green-500/80"></div>
     </div>
+    <div class="mx-auto text-xs text-gray-400 font-medium truncate max-w-[200px]">
+      demo_video.mp4
+    </div>
+  </div>
+
+  <div class="relative bg-black rounded-b-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+    <video
+      :src="demoVideo"
+      controls
+      autoplay
+      muted
+      loop
+      class="w-full h-auto block"
+    ></video>
+  </div>
+</div>
   </div>
 </section>
 
-<!-- Optional: Add JavaScript for toggle functionality -->
+
 
 </template>
 
@@ -73,3 +59,6 @@
 
 
 </style>
+
+
+
