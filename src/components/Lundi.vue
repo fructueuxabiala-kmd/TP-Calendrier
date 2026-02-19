@@ -15,9 +15,10 @@ function updateTask(task) {
   <tr
     v-for="task in taskStore.tasksByDate('Lundi')"
     :key="task.id"
-    class="group"
+    class="group "
     draggable="true"
     @dragstart="(e) => e.dataTransfer.setData('task', task.id.toString())"
+    
   >
     <td class="w-xl max-w-[300px]" >
       <div
