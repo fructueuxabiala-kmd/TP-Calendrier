@@ -16,15 +16,21 @@ const form = reactive({
 })
 
 const newUser = () => {
-  const estBon = authService.inscription({ ...form })
+  
   differencePW.value = ''
+
+  
   if (form.password !== form.confirmPassword) {
-    differencePW.value = 'les mots de passe ne sont pas identiquess.'
+    differencePW.value = 'Les mots de passe ne sont pas identiques.'
     return
   }
+
+  
+  const estBon = authService.inscription({ ...form })
+  
   if (estBon) {
-    alert('compte créé avec succès')
-    router.push({ name: 'login' })
+    alert('Compte créé avec succès !')
+    router.push('/')
   }
 }
 </script>

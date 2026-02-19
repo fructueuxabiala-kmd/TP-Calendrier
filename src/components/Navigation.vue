@@ -19,7 +19,7 @@ const table = [
 </script>
 
 <template>
-<nav class="fixed top-0 left-0  w-500 z-50 px-6 py-2 pr-30">
+<nav class="sticky top-0 left-0  w-500 z-50 px-6 py-2 pr-30">
   <div class="max-w-full mx-auto backdrop-blur-md bg-white/80 border border-gray-100 rounded-2xl px-6 py-3 shadow-sm flex items-center justify-between">
     
     <div class="flex items-center gap-3">
