@@ -1,9 +1,10 @@
 <script setup>
 import ListTask from '@/components/ListTask.vue'
-import { useListStore, useModalStore } from '@/stores/listTask'
+import { useListStore, useModalStore, useNotificationStore } from '@/stores/listTask'
 import { ref, watch } from 'vue'
 const modalStore = useModalStore()
 const taskStore = useListStore()
+const modifStore = useNotificationStore()
 
 const newTask = ref('')
 
@@ -18,9 +19,12 @@ function addTask() {
     taskStore.updateTask(newTask.value)
     modalStore.close()
     taskStore.toggleEdit()
+    modifStore.show('Tâche modifier avec succes')
   } else {
     const obj = { id: Date.now(), task: newTask.value, day: modalStore.selectedDay }
     taskStore.addTask(obj)
+    modifStore.show('Tâche ajoutée')
+    modalStore.close()
   }
   newTask.value = ''
 }
@@ -30,7 +34,7 @@ function addTask() {
   <Transition name="fade">
     <div
       v-if="modalStore.isOpen"
-      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm"
+      class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-[2px]"
     >
       <div
         class="bg-white w-full max-w-md rounded-2xl shadow-2xl border border-slate-100 overflow-hidden transform transition-all"

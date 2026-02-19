@@ -36,8 +36,8 @@ function dropTask(e,jour) {
 </script>
 
 <template>
-  <div class="min-h-screen bg-slate-50 p-6">
-    <header class="mb-8 flex items-center justify-between">
+  <div class="min-h-screen bg-slate-50 p-6 pt-30">
+    <header class="mb-8 flex items-center justify-between pb-20">
       <h2 class="text-2xl font-extrabold text-slate-800 tracking-tight">Semaine de Travail</h2>
       <div class="flex space-x-2">
         <span
@@ -91,7 +91,7 @@ function dropTask(e,jour) {
         >
           <div class="flex-1 bg-white/60 backdrop-blur-sm border-t-2 border-transparent group-hover:border-indigo-500 rounded-xl p-4 shadow-sm ring-1 ring-slate-200 transition-all hover:shadow-md min-h-[300px] flex flex-col gap-3">
   <component :is="componentsMap[jour]" @drop="(e) => dropTask(e, jour)" />
-  <!-- d'autres enfants ici -->
+
 </div>
 
 

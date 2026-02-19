@@ -19,21 +19,21 @@ const table = [
 </script>
 
 <template>
-<nav class="fixed top-0 left-0  w-full z-50 px-6 py-4">
-  <div class="max-w-6xl mx-auto backdrop-blur-md bg-white/80 border border-gray-100 rounded-2xl px-6 py-3 shadow-sm flex items-center justify-between">
+<nav class="fixed top-0 left-0  w-500 z-50 px-6 py-2 pr-30">
+  <div class="max-w-full mx-auto backdrop-blur-md bg-white/80 border border-gray-100 rounded-2xl px-6 py-3 shadow-sm flex items-center justify-between">
     
     <div class="flex items-center gap-3">
       <div class="w-8 h-7 bg-indigo-600 rounded-lg flex items-center justify-center text-white text-[10px] font-extrabold">K.M</div>
       <span class="text-gray-900 font-extrabold tracking-tight text-4xl">KA.MI</span>
     </div>
 
-    <div class="hidden sm:flex items-center gap-50 ">
+    <div class="hidden sm:flex items-center gap-50">
       <RouterLink 
         v-for="item in table" 
         :key="item.path" 
         :to="item.path"
         class="text-xl font-medium transition-colors duration-200"
-        :class="router.path === item.path ? 'text-indigo-600' : 'text-gray-500 hover:text-gray-900'"
+        :class="router.path === item.path ? 'text-indigo-600' : 'text-gray-500 hover:text-blue-500'"
       >
         {{ item.title }}
       </RouterLink>
@@ -51,7 +51,7 @@ const table = [
       <button 
         v-else 
         @click="deconnect"
-        class="px-4 py-2 bg-gray-900 text-white text-xs font-bold rounded-lg hover:bg-gray-800 transition-all shadow-sm"
+        class="px-4 py-2 bg-red-500 text-white  text-xs font-bold rounded-lg hover:bg-red-600 transition-all shadow-sm"
       >
         DÉCONNEXION
       </button>

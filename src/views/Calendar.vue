@@ -16,13 +16,13 @@ const deconnect = () => {
 </script>
 
 <template>
-  <router-link to="addevent">Modal</router-link>
+  <!-- <router-link to="addevent">Modal</router-link> -->
 
   <ListTask></ListTask>
   <AddEvent></AddEvent>
   <router-view></router-view>
 
-  <button @click="deconnect">Se déconnecter</button>
+  <!-- <button @click="deconnect">Se déconnecter</button> -->
 </template>
 
 <style scoped></style>
