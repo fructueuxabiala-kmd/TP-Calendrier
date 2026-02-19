@@ -28,8 +28,10 @@ function addTask(day) {
   console.log(day)
 }
 
-function dropTask(e) {
+function dropTask(e,jour) {
   const id = Number(e.dataTransfer.getData('task'))
+  taskStore.dropTask(id,jour)
+
 }
 </script>
 
@@ -49,7 +51,9 @@ function dropTask(e) {
       <div
         v-for="jour in ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche']"
         :key="jour"
-        class="flex flex-col group"
+         @dragover.prevent
+             @drop="(e) => dropTask(e, jour)"
+        class="flex flex-col group gap-6"
       >
         <div
           @click="addTask(jour)"
@@ -81,18 +85,20 @@ function dropTask(e) {
         </div>
 
         <div
-          class="flex-1 bg-white/60 backdrop-blur-sm border-t-2 border-transparent group-hover:border-indigo-500 rounded-xl p-4 shadow-sm ring-1 ring-slate-200 transition-all hover:shadow-md min-h-[300px]"
-          @dragover.prevent
-          @drop="dropTask"
+          class="flex-1  bg-white/60 backdrop-blur-sm border-t-2 border-transparent group-hover:border-indigo-500 rounded-xl p-4 shadow-sm ring-1 ring-slate-200 transition-all hover:shadow-md min-h-[300px] gap-6"
+        
+          
         >
-          <div class="space-y-3">
-            <component :is="componentsMap[jour]" />
-          </div>
+          <div class="flex-1 bg-white/60 backdrop-blur-sm border-t-2 border-transparent group-hover:border-indigo-500 rounded-xl p-4 shadow-sm ring-1 ring-slate-200 transition-all hover:shadow-md min-h-[300px] flex flex-col gap-3">
+  <component :is="componentsMap[jour]" @drop="(e) => dropTask(e, jour)" />
+  <!-- d'autres enfants ici -->
+</div>
+
 
           <div
             @click="addTask(jour)"
             class="mt-0 border-2 border-dashed border-slate-200 rounded-lg p-3 text-center text-slate-400 text-sm hover:border-indigo-300 hover:text-indigo-400 cursor-pointer transition-colors"
-            v-if="taskStore.tasksByDate(jour).length == 0"
+            
           >
             + Ajouter
           </div>
