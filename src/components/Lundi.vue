@@ -19,7 +19,7 @@ function updateTask(task) {
     draggable="true"
     @dragstart="(e) => e.dataTransfer.setData('task', task.id.toString())"
   >
-    <td class="w-full max-w-[140px]">
+    <td class="w-xl max-w-[300px]" >
       <div
         class="relative bg-white rounded-xl border border-slate-200 px-4 py-4 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-indigo-300"
       >
