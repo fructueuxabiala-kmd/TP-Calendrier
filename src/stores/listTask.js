@@ -36,7 +36,7 @@ export const useListStore = defineStore('list', {
         this.editedTask.task = changedTask
       }
     },
-  },
+}
 })
 
 export const useModalStore = defineStore('modal', {
