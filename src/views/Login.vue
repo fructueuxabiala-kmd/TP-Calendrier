@@ -15,18 +15,7 @@ const login = () => {
 </script>
 
 <template>
-  <!-- <div>
-    <h1>LOGIN</h1>
-<form @submit.prevent="login">
-    <div>
-        <input v-model="email" type="email" required placeholder="your mail ...." />
-        <input v-model="password" type="password" required placeholder=" Password" />
-        <button type="submit">connecter</button>
-    </div>
-</form>
 
-    <p>Je n'est pas un compte, <RouterLink to="/signin">Créer un compte</RouterLink></p>
- </div> -->
   <div
     class="min-h-screen flex items-center justify-center bg-gradient-to-br from-white-200 via-blue-200 to-white-200 p-6"
   >
