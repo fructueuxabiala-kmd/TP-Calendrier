@@ -11,10 +11,9 @@ import ModalConfirm from './views/ModalConfirm.vue';
 <template>
   <Navigation/>
  <main>
+   <ModalConfirm></ModalConfirm>
+   <Modal></Modal>
   <RouterView/>
-
-  <ModalConfirm></ModalConfirm>
-  <Modal></Modal>
 
 
  </main>
